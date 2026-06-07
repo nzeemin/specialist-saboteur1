@@ -158,4 +158,4 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00,$02
 	DEFB $20,$04,$20,$00,$08,$00,$20,$00,$02
 
 ; Background tile $FF
-LFFF7:	DEFB $DF,$FB,$DF,$FF,$F7,$FF,$DF,$FF,$08
+;LFFF7:	DEFB $DF,$FB,$DF,$FF,$F7,$FF,$DF,$FF,$08

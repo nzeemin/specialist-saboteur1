@@ -58,14 +58,14 @@
 		DEFB	$0E, tile
 		DEFW	addr
 	ENDM
-	; Vertical line, token $21..$30, count 2..17
-	MACRO	DEFRTVT count,tile,addr
-		DEFB	$1F+count, tile
-		DEFW	addr
-	ENDM
 	; Token $10..$20: Copy block of tiles using table TBLOK2
 	MACRO	DEFRTBK bnum,addr
 		DEFB	$10+bnum
+		DEFW	addr
+	ENDM
+	; Vertical line, token $21..$30, count 2..17
+	MACRO	DEFRTVT count,tile,addr
+		DEFB	$1F+count, tile
 		DEFW	addr
 	ENDM
 	; Tokens #40..#7F: Copy block of tiles; params: 4 bytes (width, height, address)
@@ -790,6 +790,7 @@ L84A8:	DEFW	LB41F	; Room procedure
 	DEFRTBK	0, TLSCR5+273		; Barrel 3x3 tiles at 7097
 	DEFRTBK	3, TLSCR5+382		; Block 4x3 tiles from 7E7B to 7104
 	DEFRTBL	15, 5,3, TLSCR5+364	; Block 5x3 tiles from 84DF to 70F2
+	DEFRTBL	48, 3,6, TLSCR0+74	; Crane block 3x6 tiles from F98F to 65DA
 	DEFB	$00	; End of sequence
 
 ; Room 84EE
