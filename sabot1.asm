@@ -2263,14 +2263,14 @@ LAEE2:	inc e		; next screen line
 ;------------------------------------------------------------------------------
 
 ; Tile buffer
-LB13E:	DEFB $FE,$82,$A2,$00,$FE,$FF,$FF,$7E	; Pixel bytes
-LB146:	DEFB $32	; Attribute byte
-LB147:	DEFB $30	; Background attribute byte
+LB13E:	DEFS 8		; Pixel bytes
+;LB146:	DEFB $32	; Attribute byte
+;LB147:	DEFB $30	; Background attribute byte
 
 ; Draw tile map on the screen
-DRALL:	xor a
-	ld h,a
-	ld l,a
+DRALL:	;xor a
+	;ld h,a
+	;ld l,a
 	LD HL,TLSCR1	; Tile screen 1 start address
 	LD DE,SCRGME	; screen address where game screen starts
 	LD B,17		; 17 rows
@@ -2309,12 +2309,9 @@ LB177:	ld de,TLSCR0-TLSCR1
 	ex DE,HL	; now DE = address in Tile screen 0
 	LD H,$00
 	LD L,A
-	PUSH HL
 	ADD HL,HL
 	ADD HL,HL
-	ADD HL,HL
-	POP BC
-	add HL,BC	; * 9
+	ADD HL,HL	; * 8
 	ld BC,LF700	; Background tiles start address
 	add HL,BC	; now HL = tile data address
 	LD BC,LB13E	; Tile buffer address
@@ -2347,27 +2344,7 @@ LB1A3:	ld hl,TLSCR2-TLSCR0
 	CP $FF		; $FF - transparent?
 	JP Z,LB1F9	; $FF => skip Ninja tile drawing
 	LD L,A
-	CP $C8
-	JP C,LB1D5
-	CP $F4
-	JP NC,LB1D5
-	LD H,$02
-	CP $DA
-	JP NC,LB1CC
-	LD H,$05
-	CP $D8
-	JP NC,LB1CC
-	LD H,$07
-	LD A,(LB146)	; get attribute byte from the tile buffer
-	AND $38
-	CP $20
-	JP C,LB1CC
-	LD H,$01
-LB1CC:	LD A,(LB146)	; get attribute byte from the tile buffer
-	AND $F8
-	OR H
-	LD (LB146),A	; set attribute byte
-LB1D5:	LD H,$00
+	LD H,$00
 	ADD HL,HL
 	ADD HL,HL
 	ADD HL,HL
@@ -2529,15 +2506,12 @@ LB263:	ld hl,TLSCR5	; !!MUT-ARG!! address in Tile Screen 5
 	JP Z,LB293	; $FF => skip front tile drawing
 	LD H,$00
 	LD L,A
-	LD A,(LB147)	; get Background tile attribute
-	LD (LB146),A	; set it as current tile attribute
-	ld d,h
-	ld e,l
+	;LD A,(LB147)	; get Background tile attribute
+	;LD (LB146),A	; set it as current tile attribute
 	ADD HL,HL
 	ADD HL,HL
 	ADD HL,HL
 	ADD HL,HL	; * 16
-	ADD HL,DE	; * 17
 	LD DE,LD600	; Front tiles base address
 	ADD HL,DE	; now HL = address of tile data
 	LD B,$08
@@ -5666,40 +5640,40 @@ Sabot1RoomsEnd:
 Sabot1RoomsSize EQU Sabot1RoomsEnd - Sabot1RoomsBegin
 	DISPLAY "Rooms size: ", /A, Sabot1RoomsSize
 
+; Font, 413 bytes
+	INCLUDE "sabot1ft.asm"
 ; Title picture (two ninjas), ZX0 encoded, 424 bytes
 L62DB:	INCBIN "sabot1mp.zx0"
+; Sprites
+	INCLUDE "sabot1sp1.asm"	; Sprites, 69 bytes
 
 ; Front tiles, 124 tiles, 17 bytes each
 	INCLUDE "sabot1t1.asm"
 Sabot1Tiles1End:	; Gap of $07DD bytes starts here
 
-; Font, 413 bytes
-	INCLUDE "sabot1ft.asm"
-; Sprites
-	INCLUDE "sabot1sp2.asm"	; Sprites, 630 bytes
+; Game frame with indicators + tiles, ??? bytes
+	INCLUDE "sabot1in.asm"
 ; Items, 960 bytes
 	INCLUDE "sabot1it.asm"
+; Sprites
+	INCLUDE "sabot1sp2.asm"	; Sprites, 630 bytes
 
-	DEFS 10 	;FILLER
+	DEFS 51		; FILLER
 Sabot1Tiles1B:
 Sabot1Tiles1Gap EQU Sabot1Tiles1B - Sabot1Tiles1End
-	;DISPLAY "Sabot1Tiles1Gap: ",/A, Sabot1Tiles1Gap
-	ASSERT Sabot1Tiles1Gap == 2013	; Make sure second part of tiles properly aligned
+	DISPLAY "Sabot1Tiles1Gap: ",/A, Sabot1Tiles1Gap
+	ASSERT Sabot1Tiles1Gap == 1904 ; == $77*16  Make sure second part of tiles properly aligned
 	INCLUDE "sabot1t1b.asm"
 
 	INCLUDE "sabot1t2.asm"
 Sabot1Tiles2End:	; Gap of 360 bytes starts here
 
-; Sprites
-	INCLUDE "sabot1sp1.asm"	; Sprites, 69 bytes
-; Game frame with indicators + tiles, 286 bytes
-	INCLUDE "sabot1in.asm"
 
-	DEFS 28		; FILLER
+	DEFS 320	; FILLER
 Sabot1Tiles2B:
 Sabot1Tiles2Gap EQU Sabot1Tiles2B - Sabot1Tiles2End
 	;DISPLAY "Sabot1Tiles2Gap: ",/A, Sabot1Tiles2Gap
-	ASSERT Sabot1Tiles2Gap == 360	; Make sure second part of tiles properly aligned
+	ASSERT Sabot1Tiles2Gap == 320	; Make sure second part of tiles properly aligned
 	INCLUDE "sabot1t3.asm"
 
 Sabot1MainEnd:
