@@ -45,7 +45,7 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00, color_cyan	; $63
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_white	; $8E
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_white	; $8F
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_white	; $90
-	DEFB $01,$01,$39,$C7,$D7,$D7,$D7,$83, color_white
+	DEFB $01,$01,$39,$C7,$D7,$D7,$D7,$83, color_cyan	; $91 vert base
 	DEFB $01,$7D,$5D,$DD,$35,$0D,$03,$00, color_white
 	DEFB $31,$0D,$03,$00,$00,$00,$00,$00, color_white
 	DEFB $41,$3D,$1D,$0D,$05,$03,$01,$00, color_white
@@ -80,7 +80,7 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00, color_cyan	; $63
 	DEFB $00,$00,$80,$80,$47,$47,$23,$E3, color_white
 	DEFB $F1,$F1,$F8,$F8,$00,$00,$00,$00, color_white
 	DEFB $FF,$FF,$FF,$FF,$00,$00,$00,$00, color_white
-	DEFB $FF,$00,$7F,$5F,$5F,$5F,$5F,$5F, color_white
+	DEFB $FF,$00,$7F,$5F,$5F,$5F,$5F,$5F, color_cyan	; $B4
 	DEFB $3F,$3F,$3F,$1F,$1F,$1F,$8F,$8F, color_white
 	DEFB $FE,$FE,$FE,$FF,$FF,$FF,$FF,$FF, color_white
 	DEFB $FF,$FF,$FF,$FF,$FF,$7F,$7F,$7F, color_white
@@ -90,7 +90,7 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00, color_cyan	; $63
 	DEFB $00,$00,$00,$00,$1F,$1F,$8F,$8F, color_white
 	DEFB $27,$63,$62,$60,$60,$62,$23,$E7, color_white
 	DEFB $E5,$C5,$45,$05,$05,$45,$C5,$E7, color_white
-	DEFB $FD,$FD,$FD,$FD,$FD,$F5,$FD,$FD, color_white
+	DEFB $FD,$FD,$FD,$FD,$FD,$F5,$FD,$FD, color_cyan	; $BE
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_white
 	DEFB $F8,$F8,$F1,$F1,$E3,$E3,$C5,$C7, color_white
 	DEFB $89,$8D,$1D,$1D,$25,$3D,$41,$7F, color_white
@@ -98,7 +98,7 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00, color_cyan	; $63
 	DEFB $00,$00,$01,$01,$E3,$E3,$C5,$C7, color_white
 	DEFB $8F,$8F,$1F,$1F,$00,$00,$00,$00, color_white
 	DEFB $43,$43,$65,$65,$65,$65,$43,$C3, color_white
-	DEFB $7F,$7F,$7F,$FF,$FF,$FF,$FF,$FF, color_white
+	DEFB $7F,$7F,$7F,$FF,$FF,$FF,$FF,$FF, color_green	; $C6
 	DEFB $FC,$FC,$FC,$F8,$F8,$F8,$F1,$F1, color_white
 	DEFB $8F,$8F,$1F,$1F,$1F,$3F,$3F,$3F, color_white
 	DEFB $FF,$FF,$FF,$FF,$FF,$FE,$FE,$FE, color_white

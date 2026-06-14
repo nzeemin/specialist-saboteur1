@@ -1,121 +1,121 @@
 ; Pictures of NEAR/HELD items, 32x24px each
-LA7AD:	DEFB $00,$00,$00,$00,$00,$00,$00,$00	; Nothing
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$45,$DD,$54,$5E
-	DEFB $65,$49,$56,$52,$65,$49,$56,$52
-	DEFB $55,$49,$D5,$50,$55,$49,$55,$56
-	DEFB $4D,$49,$54,$D2,$4D,$49,$54,$D2
-	DEFB $45,$C9,$54,$5E,$00,$00,$00,$00
-LA819:	DEFB $00,$00,$00,$00,$00,$00,$80,$00	; Shuriken
-	DEFB $00,$00,$80,$00,$00,$00,$80,$00
-	DEFB $00,$01,$80,$00,$00,$01,$80,$00
-	DEFB $00,$03,$C0,$00,$00,$7F,$F0,$00
-	DEFB $00,$0F,$FE,$00,$00,$03,$C0,$00
-	DEFB $00,$01,$80,$00,$00,$01,$80,$00
-	DEFB $00,$01,$00,$00,$00,$01,$00,$00
-	DEFB $00,$01,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $75,$56,$55,$D2,$45,$55,$55,$1A
-	DEFB $77,$56,$59,$9E,$15,$55,$55,$16
-	DEFB $75,$25,$55,$D2,$00,$00,$00,$00
-LA885:	DEFB $00,$00,$00,$0C,$00,$00,$00,$7C	; Knife
-	DEFB $00,$00,$07,$D8,$00,$00,$0F,$B8
-	DEFB $00,$00,$1F,$B0,$00,$00,$7F,$60
-	DEFB $00,$00,$FE,$C0,$00,$01,$F9,$80
-	DEFB $00,$07,$CF,$00,$00,$0F,$BE,$00
-	DEFB $00,$BE,$78,$00,$00,$BD,$E0,$00
-	DEFB $03,$5F,$80,$00,$0F,$AC,$00,$00
-	DEFB $1F,$50,$00,$00,$DF,$48,$00,$00
-	DEFB $EF,$84,$00,$00,$6F,$04,$00,$00
-	DEFB $74,$00,$00,$00,$38,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-LA8F1:	DEFB $00,$00,$00,$00,$00,$00,$00,$00	; ??
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$70,$00,$00,$00,$FC,$00
-	DEFB $00,$01,$3E,$00,$00,$71,$3F,$00
-	DEFB $00,$FE,$3F,$C0,$00,$BF,$1F,$E0
-	DEFB $01,$3F,$9F,$F0,$01,$3F,$DF,$F0
-	DEFB $01,$1F,$FF,$F0,$00,$9F,$FC,$F0
-	DEFB $00,$8F,$F9,$F8,$00,$47,$F3,$F8
-	DEFB $00,$31,$F3,$F0,$01,$88,$7F,$E0
-	DEFB $01,$C7,$C3,$C0,$00,$00,$00,$06
-	DEFB $18,$04,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-LA95D:	DEFB $00,$00,$3E,$00,$00,$00,$F5,$C0	; Brick
-	DEFB $00,$03,$FA,$B8,$00,$0F,$F5,$56
-	DEFB $00,$3F,$FB,$AF,$00,$FF,$FE,$FF
-	DEFB $03,$FF,$F5,$6B,$0F,$FF,$EA,$D5
-	DEFB $3F,$FF,$57,$AB,$EA,$FE,$AD,$55
-	DEFB $BD,$55,$7A,$AB,$D7,$BA,$F5,$55
-	DEFB $AA,$EF,$AA,$AB,$D5,$5F,$55,$56
-	DEFB $AA,$AA,$AA,$BE,$D5,$57,$55,$78
-	DEFB $AA,$AA,$AA,$E0,$D5,$57,$57,$80
-	DEFB $6A,$AA,$AE,$00,$1D,$57,$78,$00
-	DEFB $03,$AB,$E0,$00,$00,$77,$80,$00
-	DEFB $00,$0C,$00,$00,$00,$00,$00,$00
-LA9C9:	DEFB $00,$00,$00,$00,$00,$00,$00,$00	; Pipe
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $7F,$FF,$FF,$FE,$60,$00,$00,$02
-	DEFB $71,$3E,$07,$CA,$7F,$FF,$FF,$FA
-	DEFB $7F,$FF,$FF,$F2,$7F,$FF,$FF,$FE
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$3F,$3E,$7C,$FC
-	DEFB $21,$08,$44,$80,$21,$08,$44,$FC
-	DEFB $3F,$08,$7C,$80,$20,$08,$40,$80
-	DEFB $20,$3E,$40,$FC,$00,$00,$00,$00
-LAA35:	DEFB $00,$00,$00,$00,$00,$00,$00,$00	; Granade
-	DEFB $00,$00,$00,$E0,$00,$00,$39,$B0
-	DEFB $00,$00,$0D,$18,$00,$0F,$F6,$18
-	DEFB $00,$7E,$7B,$70,$00,$CF,$9D,$A0
-	DEFB $01,$F2,$6D,$C0,$03,$FD,$F6,$C0
-	DEFB $07,$72,$F6,$C0,$0F,$6F,$6A,$C0
-	DEFB $0F,$5F,$AA,$C0,$1B,$BF,$BE,$C0
-	DEFB $1B,$5F,$DC,$C0,$3A,$EF,$DC,$C0
-	DEFB $3D,$F7,$AC,$C0,$3D,$FB,$69,$C0
-	DEFB $16,$FD,$F9,$80,$1F,$62,$71,$80
-	DEFB $0C,$9F,$E3,$00,$0F,$E7,$C7,$00
-	DEFB $03,$FF,$8E,$00,$00,$FE,$00,$00
-LAAA1:	DEFB $00,$00,$00,$00,$01,$FF,$FF,$F8	; Disk
-	DEFB $01,$FF,$FF,$F8,$01,$FF,$FF,$F8
-	DEFB $01,$FF,$FF,$F8,$01,$FF,$FF,$F8
-	DEFB $01,$FF,$FF,$F8,$01,$FF,$FF,$F8
-	DEFB $01,$FF,$0C,$F8,$01,$FE,$F7,$F8
-	DEFB $01,$FD,$FB,$F8,$01,$85,$FB,$F8
-	DEFB $01,$85,$FB,$F8,$01,$FD,$FB,$F8
-	DEFB $01,$FE,$F7,$F8,$01,$FF,$0F,$F8
-	DEFB $00,$00,$00,$00,$0F,$84,$FC,$84
-	DEFB $08,$44,$8C,$84,$08,$44,$80,$84
-	DEFB $08,$CC,$FC,$FC,$08,$CC,$0C,$98
-	DEFB $08,$CC,$8C,$98,$0F,$8C,$FC,$98
-LAB0D:	DEFB $00,$00,$00,$00,$00,$06,$80,$00	; Bomb
-	DEFB $00,$89,$40,$00,$01,$68,$20,$00
-	DEFB $02,$10,$33,$00,$07,$77,$00,$00
-	DEFB $07,$77,$FF,$C0,$07,$77,$FF,$C0
-	DEFB $07,$77,$DD,$C0,$07,$77,$AA,$D0
-	DEFB $07,$77,$AA,$D0,$07,$77,$AA,$D0
-	DEFB $07,$77,$DD,$D0,$07,$77,$FF,$C0
-	DEFB $07,$77,$FF,$C0,$07,$77,$FF,$C0
-	DEFB $00,$00,$00,$00,$0F,$1C,$8B,$C0
-	DEFB $08,$A2,$DA,$20,$0F,$22,$AB,$C0
-	DEFB $08,$A2,$8A,$20,$08,$A2,$8A,$20
-	DEFB $0F,$1C,$8B,$C0,$00,$00,$00,$00
-LAB79:	DEFB $00,$00,$00,$00,$00,$00,$00,$00	; Console
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$00,$00,$00,$00,$00,$00,$00
-	DEFB $00,$03,$03,$40,$00,$03,$23,$40
-	DEFB $00,$0F,$FF,$E0,$00,$0C,$00,$60
-	DEFB $00,$0D,$FF,$FC,$01,$FA,$00,$0C
-	DEFB $0F,$83,$FF,$EC,$0C,$7F,$E0,$2C
-	DEFB $0C,$FF,$FF,$CC,$0F,$FC,$81,$3C
-	DEFB $00,$00,$FF,$00,$00,$00,$FD,$00
-	DEFB $00,$00,$FD,$00,$00,$00,$FD,$00
-	DEFB $00,$00,$FD,$00,$00,$00,$FD,$00
-	DEFB $00,$00,$FD,$00,$00,$00,$FF,$00
+LA7AD:	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00	; Nothing
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$45
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$DD
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$54
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$5E
+	DEFB color_yellow,	$65,$65,$55,$55,$4D,$4D,$45,$00
+	DEFB color_yellow,	$49,$49,$49,$49,$49,$49,$C9,$00
+	DEFB color_yellow,	$56,$56,$D5,$55,$54,$54,$54,$00
+	DEFB color_yellow,	$52,$52,$50,$56,$D2,$D2,$5E,$00
+LA819:	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00	; Shuriken
+	DEFB color_cyan,	$00,$00,$00,$00,$01,$01,$03,$7F
+	DEFB color_white,	$00,$80,$80,$80,$80,$80,$C0,$F0
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,	$0F,$03,$01,$01,$01,$01,$01,$00
+	DEFB color_white,	$FE,$C0,$80,$80,$00,$00,$00,$00
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$75,$45,$77,$15,$75,$00
+	DEFB color_yellow,	$00,$00,$56,$55,$56,$55,$25,$00
+	DEFB color_yellow,	$00,$00,$55,$55,$59,$55,$55,$00
+	DEFB color_yellow,	$00,$00,$D2,$1A,$9E,$16,$D2,$00
+LA885:	DEFB color_red,		$00,$00,$00,$00,$00,$00,$00,$00	; Knife
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$01
+	DEFB color_white,	$00,$00,$07,$0F,$1F,$7F,$FE,$F9
+	DEFB color_white,	$0C,$7C,$D8,$B8,$B0,$60,$C0,$80
+	DEFB color_red,		$00,$00,$00,$00,$03,$0F,$1F,$DF
+	DEFB color_white,	$07,$0F,$BE,$BD,$5F,$AC,$50,$48
+	DEFB color_white,	$CF,$BE,$78,$E0,$80,$00,$00,$00
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_red,		$EF,$6F,$74,$38,$00,$00,$00,$00
+	DEFB color_red,		$84,$04,$00,$00,$00,$00,$00,$00
+	DEFB color_red,		$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_red,		$00,$00,$00,$00,$00,$00,$00,$00
+LA8F1:	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00	; ??
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$01,$71
+	DEFB color_yellow,	$00,$00,$00,$00,$70,$FC,$3E,$3F
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$00,$01,$01,$01,$00,$00,$00
+	DEFB color_yellow,	$FE,$BF,$3F,$3F,$1F,$9F,$8F,$47
+	DEFB color_yellow,	$3F,$1F,$9F,$DF,$FF,$FC,$F9,$F3
+	DEFB color_yellow,	$C0,$E0,$F0,$F0,$F0,$F0,$F8,$F8
+	DEFB color_yellow,	$00,$01,$01,$00,$18,$00,$00,$00
+	DEFB color_yellow,	$31,$88,$C7,$00,$04,$00,$00,$00
+	DEFB color_yellow,	$F3,$7F,$C3,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$F0,$E0,$C0,$06,$00,$00,$00,$00
+LA95D:	DEFB color_red,		$00,$00,$00,$00,$00,$00,$03,$0F	; Brick
+	DEFB color_red,		$00,$00,$03,$0F,$3F,$FF,$FF,$FF
+	DEFB color_red,		$3E,$F5,$FA,$F5,$FB,$FE,$F5,$EA
+	DEFB color_red,		$00,$C0,$B8,$56,$AF,$FF,$6B,$D5
+	DEFB color_red,		$3F,$EA,$BD,$D7,$AA,$D5,$AA,$D5
+	DEFB color_red,		$FF,$FE,$55,$BA,$EF,$5F,$AA,$57
+	DEFB color_red,		$57,$AD,$7A,$F5,$AA,$55,$AA,$55
+	DEFB color_red,		$AB,$55,$AB,$55,$AB,$56,$BE,$78
+	DEFB color_red,		$AA,$D5,$6A,$1D,$03,$00,$00,$00
+	DEFB color_red,		$AA,$57,$AA,$57,$AB,$77,$0C,$00
+	DEFB color_red,		$AA,$57,$AE,$78,$E0,$80,$00,$00
+	DEFB color_red,		$E0,$80,$00,$00,$00,$00,$00,$00
+LA9C9:	DEFB color_white,	$00,$00,$00,$00,$7F,$60,$71,$7F	; Pipe
+	DEFB color_white,	$00,$00,$00,$00,$FF,$00,$3E,$FF
+	DEFB color_white,	$00,$00,$00,$00,$FF,$00,$07,$FF
+	DEFB color_white,	$00,$00,$00,$00,$FE,$02,$CA,$FA
+	DEFB color_cyan,	$7F,$7F,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,	$FF,$FF,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,	$FF,$FF,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,	$F2,$FE,$00,$00,$00,$00,$00,$00
+	DEFB color_yellow,	$00,$3F,$21,$21,$3F,$20,$20,$00
+	DEFB color_yellow,	$00,$3E,$08,$08,$08,$08,$3E,$00
+	DEFB color_yellow,	$00,$7C,$44,$44,$7C,$40,$40,$00
+	DEFB color_yellow,	$00,$FC,$80,$FC,$80,$80,$FC,$00
+LAA35:	DEFB color_green,	$00,$00,$00,$00,$00,$00,$00,$00	; Granade
+	DEFB color_green,	$00,$00,$00,$00,$00,$0F,$7E,$CF
+	DEFB color_green,	$00,$00,$00,$39,$0D,$F6,$7B,$9D
+	DEFB color_green,	$00,$00,$E0,$B0,$18,$18,$70,$A0
+	DEFB color_green,	$01,$03,$07,$0F,$0F,$1B,$1B,$3A
+	DEFB color_green,	$F2,$FD,$72,$6F,$5F,$BF,$5F,$EF
+	DEFB color_green,	$6D,$F6,$F6,$6A,$AA,$BE,$DC,$DC
+	DEFB color_green,	$C0,$C0,$C0,$C0,$C0,$C0,$C0,$C0
+	DEFB color_green,	$3D,$3D,$16,$1F,$0C,$0F,$03,$00
+	DEFB color_green,	$F7,$FB,$FD,$62,$9F,$E7,$FF,$FE
+	DEFB color_green,	$AC,$69,$F9,$71,$E3,$C7,$8E,$00
+	DEFB color_green,	$C0,$C0,$80,$80,$00,$00,$00,$00
+LAAA1:	DEFB color_cyan,	$00,$01,$01,$01,$01,$01,$01,$01	; Disk
+	DEFB color_cyan,	$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+	DEFB color_cyan,	$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+	DEFB color_cyan,	$00,$F8,$F8,$F8,$F8,$F8,$F8,$F8
+	DEFB color_cyan,	$01,$01,$01,$01,$01,$01,$01,$01
+	DEFB color_cyan,	$FF,$FE,$FD,$85,$85,$FD,$FE,$FF
+	DEFB color_cyan,	$0C,$F7,$FB,$FB,$FB,$FB,$F7,$0F
+	DEFB color_cyan,	$F8,$F8,$F8,$F8,$F8,$F8,$F8,$F8
+	DEFB color_yellow,	$00,$0F,$08,$08,$08,$08,$08,$0F
+	DEFB color_yellow,	$00,$84,$44,$44,$CC,$CC,$CC,$8C
+	DEFB color_yellow,	$00,$FC,$8C,$80,$FC,$0C,$8C,$FC
+	DEFB color_yellow,	$00,$84,$84,$84,$FC,$98,$98,$98
+LAB0D:	DEFB color_red,		$00,$00,$00,$01,$02,$07,$07,$07	; Bomb
+	DEFB color_red,		$00,$06,$89,$68,$10,$77,$77,$77
+	DEFB color_blue,	$00,$80,$40,$20,$33,$00,$FF,$FF
+	DEFB color_blue,	$00,$00,$00,$00,$00,$00,$C0,$C0
+	DEFB color_red,		$07,$07,$07,$07,$07,$07,$07,$07
+	DEFB color_red,		$77,$77,$77,$77,$77,$77,$77,$77
+	DEFB color_white,	$DD,$AA,$AA,$AA,$DD,$FF,$FF,$FF
+	DEFB color_blue,	$C0,$D0,$D0,$D0,$D0,$C0,$C0,$C0
+	DEFB color_yellow,	$00,$0F,$08,$0F,$08,$08,$0F,$00
+	DEFB color_yellow,	$00,$1C,$A2,$22,$A2,$A2,$1C,$00
+	DEFB color_yellow,	$00,$8B,$DA,$AB,$8A,$8A,$8B,$00
+	DEFB color_yellow,	$00,$C0,$20,$C0,$20,$20,$C0,$00
+LAB79:	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00	; Console
+	DEFB color_yellow,	$00,$00,$00,$00,$00,$00,$03,$03
+	DEFB color_red,		$00,$00,$00,$00,$00,$00,$03,$23
+	DEFB color_green,	$00,$00,$00,$00,$00,$00,$40,$40
+	DEFB color_cyan,	$00,$00,$00,$01,$0F,$0C,$0C,$0F
+	DEFB color_cyan,	$0F,$0C,$0D,$FA,$83,$7F,$FF,$FC
+	DEFB color_cyan,	$FF,$00,$FF,$00,$FF,$E0,$FF,$81
+	DEFB color_cyan,	$E0,$60,$FC,$0C,$EC,$2C,$CC,$3C
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,	$FF,$FD,$FD,$FD,$FD,$FD,$FD,$FF
+	DEFB color_white,	$00,$00,$00,$00,$00,$00,$00,$00

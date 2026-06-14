@@ -7,9 +7,7 @@ CSHORT EQU 0	; Cheat code for small map used to test main features
 
 ;----------------------------------------------------------------------------
 
-	INCLUDE "sabot0.inc"
-
-	DISPLAY "COLOR: ",/D, COLOR
+	;DISPLAY "COLOR: ",/D, COLOR
   IF COLOR == 0  ; Specialist B/W, no color
 color_white     = 0 ;STUB
 color_yellow	= 0 ;STUB
@@ -52,6 +50,8 @@ color_menupict	= color_blue
 color_menuline	= color_white
 color_backFF	= color_blue
   ENDIF
+
+	INCLUDE "sabot0.inc"
 
 	ORG	SABOTCOD0_END
 
@@ -1109,21 +1109,32 @@ DRITEM:	push hl		; save screen address
 	INC HL
 	LD D,(HL)
 	pop hl		; restore screen address
+	LD C,3		; 23 rows
+.l10:	push hl		; save screen address
+	LD B,4		; 4 columns
+.l20:	push BC
+	push HL		; save screen address
   IF COLOR > 2
-	xor A ;TODO color
+	ld A,(DE)	; get attr byte
 	ld (color_port),A
   ENDIF
-	LD C,24		; 24 lines
-.l10:	push hl
-	LD B,4		; 4 in line
-.l20:	LD A,(DE)
+	inc DE
+	ld B,8		; 8 lines
+.l30:	LD A,(DE)
 	LD (HL),A	; put to screen
 	INC DE
-	inc h		; one to right
-	dec b
-	jp nz,.l20
-	pop hl
 	inc l		; line down
+	dec B
+	jp nz,.l30
+	pop HL		; restore screen address
+	inc H		; one to right
+	pop BC		; restore counters
+	dec B
+	jp nz,.l20
+	pop hl		; restore screen address: start of row
+	ld A,8		; 8 lines down
+	add L
+	ld L,A
 	DEC C
 	JP NZ,.l10
 	RET
@@ -1753,7 +1764,12 @@ LA440:	LD HL,GARDCN	; Guard counter address
 	LD (LA4D0),A	; set the instruction
 	LD A,$13	; "INC DE" instruction
 	LD (LA4D1),A	; set the instruction
-LA4A2:	PUSH HL		; save screen address
+LA4A2:	
+  IF COLOR > 2 && COLOR <= 8
+	ld a,color_red
+	ld (color_port),A
+  ENDIF
+	PUSH HL		; save screen address
 	LD HL,TLSCR0	; Tile screen 0 start address
 	ADD HL,DE
 	LD A,$64
@@ -3088,7 +3104,7 @@ LB5F5:	LD (HL),A
 	LD A,$FA
 	LD (LB2FD),A
 	LD A,$C8
-	;LD A,$D2 ;DEBUG Granade
+	LD A,$D2 ;DEBUG Granade
 	LD (LBD79+1),A
 	CALL L7472
 	;DI
@@ -3897,6 +3913,10 @@ LBBA8:	ld (LA39F),a	; !!MUT-ARG!! set object empty
 ; Draw Explosion image and make some noise
 LBA52:	ld A,$0B
 	ld ($ff03),A	; Sound on
+  IF COLOR > 2
+	ld a,color_red
+	ld (color_port),A
+  ENDIF
 LBA57:	LD HL,$C0D0	; !!MUT-ARG!! address on the screen
 LBA5A:	LD DE,LABE5	; !!MUT-ARG!! Explosion image address
 LBA5D:	LD B,3		; !!MUT-ARG!! height 1..3
@@ -4440,6 +4460,10 @@ LC056:	LD HL,LBF12	; "ESCAPE" / "MISSION SUCCESSFUL"
 LC094:	LD HL,MVTCN	; counter address
 	DEC (HL)	; decrease counter
 	JP Z,LBFD5	; zero => Escaped; final messages, then Game Over
+  IF COLOR > 2 && COLOR <= 8
+	ld a,color_green
+	ld (color_port),A
+  ENDIF
 	ld a,$0B
 	ld ($ff03),A	; sound on
 	ld HL,SCRGME+$0604
@@ -5760,7 +5784,7 @@ Sabot1RoomsBegin:
 	INCLUDE "sabot1rb.asm"	; 833 bytes
 Sabot1RoomsEnd:
 Sabot1RoomsSize EQU Sabot1RoomsEnd - Sabot1RoomsBegin
-	DISPLAY "Rooms size: ", /A, Sabot1RoomsSize
+	;DISPLAY "Rooms size: ", /A, Sabot1RoomsSize
 
 ; Font, 413 bytes
 	INCLUDE "sabot1ft.asm"
@@ -5780,7 +5804,7 @@ Sabot1Tiles1End:	; First gap starts here
 ; Sprites
 	INCLUDE "sabot1sp2.asm"	; Sprites, 630 bytes
 
-	DEFS 147		; FILLER
+	DEFS 27		; FILLER
 Sabot1Tiles1B:
 Sabot1Tiles1Gap EQU Sabot1Tiles1B - Sabot1Tiles1End
 	;DISPLAY "Sabot1Tiles1Gap: ",/A, Sabot1Tiles1Gap
@@ -5799,7 +5823,7 @@ Sabot1Tiles2Gap EQU Sabot1Tiles2B - Sabot1Tiles2End
 	INCLUDE "sabot1t3.asm"
 
 Sabot1MainEnd:
-	DISPLAY "Code/data end: ", /A, Sabot1MainEnd
+	;DISPLAY "Code/data end: ", /A, Sabot1MainEnd
 
 ;----------------------------------------------------------------------------
 

@@ -22,12 +22,12 @@ LAE02:	DEFB color_red, $30,$08,$04,$05,$02,$8D,$70,$1C
 	DEFB color_blue,$00,$00,$00,$00,$00,$00,$00,$00
 	DEFB color_red, $50,$72,$54,$CE,$25,$28,$28,$08
 	DEFB color_red, $10,$3C,$92,$61,$A0,$18,$04,$04
-	DEFB color_blue,$7F,$80,$80,$87,$88,$88,$88,$88
-	DEFB color_blue,$FF,$00,$00,$FF,$00,$00,$00,$00
-	DEFB color_blue,$FE,$01,$01,$E1,$11,$11,$11,$11
-	DEFB color_blue,$88,$88,$88,$88,$88,$88,$88,$88
-	DEFB color_blue,$11,$11,$11,$11,$11,$11,$11,$11
-	DEFB color_blue,$88,$88,$88,$88,$87,$80,$80,$7F
-	DEFB color_blue,$00,$00,$00,$00,$FF,$00,$00,$FF
-	DEFB color_blue,$11,$11,$11,$11,$E1,$01,$01,$FE
-	DEFB color_blue,$00,$00,$00,$00,$00,$00,$00,$00
+	DEFB color_cyan,$7F,$80,$80,$87,$88,$88,$88,$88
+	DEFB color_cyan,$FF,$00,$00,$FF,$00,$00,$00,$00
+	DEFB color_cyan,$FE,$01,$01,$E1,$11,$11,$11,$11
+	DEFB color_cyan,$88,$88,$88,$88,$88,$88,$88,$88
+	DEFB color_cyan,$11,$11,$11,$11,$11,$11,$11,$11
+	DEFB color_cyan,$88,$88,$88,$88,$87,$80,$80,$7F
+	DEFB color_cyan,$00,$00,$00,$00,$FF,$00,$00,$FF
+	DEFB color_cyan,$11,$11,$11,$11,$E1,$01,$01,$FE
+	DEFB color_cyan,$00,$00,$00,$00,$00,$00,$00,$00
