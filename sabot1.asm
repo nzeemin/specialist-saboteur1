@@ -1,10 +1,58 @@
 ;----------------------------------------------------------------------------
 
-	INCLUDE "sabot0.inc"
+CHELTH EQU 1	; Cheat code for no damage
+CVERT  EQU 0	; Cheat code for short route to Helicopter
+;CBOMB EQU 0	; Cheat code for carrying BOMB
+CSHORT EQU 0	; Cheat code for small map used to test main features
 
 ;----------------------------------------------------------------------------
 
-	OUTPUT "sabot1.bin"
+	INCLUDE "sabot0.inc"
+
+	DISPLAY "COLOR: ",/D, COLOR
+  IF COLOR == 0  ; Specialist B/W, no color
+color_white     = 0 ;STUB
+color_yellow	= 0 ;STUB
+color_red	= 0 ;STUB
+color_cyan	= 0 ;STUB
+color_green	= 0 ;STUB
+color_blue	= 0 ;STUB
+  ELSEIF COLOR == 4		; Specialist with 4 INK colors, PAPER is black
+color_port EQU $FF02
+color_white     = $00	; white
+color_yellow	= $00	; yellow -> white
+color_red	= $40	; red
+color_cyan	= $C0	; cyan -> blue
+color_green	= $80	; green
+color_blue	= $C0	; blue
+color_energy	= color_red
+color_menupict	= color_blue
+color_menuline	= color_white
+color_backFF	= color_blue
+  ELSEIF COLOR == 8	; Specialist with 8 INK colors, PAPER is black
+color_port EQU $FF02
+color_white     = $00	; white
+color_yellow	= $10	; yellow
+color_red	= $50	; red
+color_cyan	= $80	; cyan
+color_green	= $90	; green
+color_blue	= $C0	; blue
+color_energy	= color_red
+color_menupict	= color_blue
+color_menuline	= color_white
+color_backFF	= color_blue
+  ELSEIF COLOR >= 16  ; Specialist MX
+color_port EQU $FFF8
+color_white     = $F0	; white on black
+color_yellow	= $E0	; yellow on black
+color_red	= $40	; red on black
+color_blue	= $10	; blue on black
+color_energy	= $40	; red on black
+color_menupict	= color_blue
+color_menuline	= color_white
+color_backFF	= color_blue
+  ENDIF
+
 	ORG	SABOTCOD0_END
 
 	;JP	LF9E7
@@ -15,11 +63,6 @@ LF9F4:	jp LF913
 	;JP LF9F4
 
 ;------------------------------------------------------------------------------
-
-CHELTH EQU 1	; Cheat code for no damage
-CVERT  EQU 0	; Cheat code for short route to Helicopter
-;CBOMB EQU 0	; Cheat code for carrying BOMB
-CSHORT EQU 0	; Cheat code for small map used to test main features
 
 SCRTOP EQU $9820	; Game screen start address
 SCRGME EQU SCRTOP+$0108	; Game screen inside the frame start address
@@ -635,7 +678,14 @@ LC070:	DEFM "DISK "
 LC075:	DEFM "BONUS: $05000"
 LC087:	DEFM "TOTAL PAY : $"
 
-TITLE:	DEFM "SABOTEUR 1"
+TITLE:	DEFM "SABOTEUR 1 "
+  IF COLOR == 0
+	DEFM "  "
+  ELSEIF COLOR == 4
+	DEFM "C4"
+  ELSEIF COLOR == 8
+	DEFM "C8"
+  ENDIF
 
 ; Menu text block
 MENUTXT:
@@ -725,7 +775,12 @@ L6289:
 	ld BC,TLSCR0	; destination addr
 	call dzx0
 ; Buffer is ready, copy to screen
-L62A9: 	LD HL,SCRTOP+$00108 ; Start of screen
+L62A9: 	
+  IF COLOR > 2
+	ld A,color_menupict
+	ld (color_port),A
+  ENDIF
+	LD HL,SCRTOP+$00108 ; Start of screen
  	LD DE,TLSCR0	; Tile screens address
  	LD C,12		; Number of columns = 12
 L62B1: 	PUSH HL		; save screen address
@@ -991,7 +1046,12 @@ L7465:	LD (HL),A
 ;------------------------------------------------------------------------------
 
 ; Initial Energy fill
-L7472:	ld de,SCRIND+$0610 ; screen address
+L7472:
+  IF COLOR > 2
+	ld A,color_energy
+	ld (color_port),A
+  ENDIF
+	ld de,SCRIND+$0610 ; screen address
 	ld a,$FF	; filler
 	ld b,15
 L7481:	push de
@@ -1016,6 +1076,10 @@ L749E:	ld hl,SCRIND+$0110 ; screen address for line start + 1
 	ld d,a
 	ld e,$00
 	add hl,de	; HL = screen address
+  IF COLOR > 2
+	ld A,color_energy
+	ld (color_port),A
+  ENDIF
 	LD B,16
 	LD A,(NRJLO)
 	LD C,A
@@ -1045,6 +1109,10 @@ DRITEM:	push hl		; save screen address
 	INC HL
 	LD D,(HL)
 	pop hl		; restore screen address
+  IF COLOR > 2
+	xor A ;TODO color
+	ld (color_port),A
+  ENDIF
 	LD C,24		; 24 lines
 .l10:	push hl
 	LD B,4		; 4 in line
@@ -2117,16 +2185,25 @@ LACCA:	LD DE,LAD65	; Game screen frames/indicators ZX0 encoded sequence
 	push hl
 	push de
 	push bc
-	; tile index -> tile address (LAE02 + A*9)
+; tile index -> tile address (LAE02 + A*9)
 	ld A,(hl)
-	ld h,0
-	ld l,A
-	add hl,hl
-	add hl,hl
-	add hl,hl	; * 8
+	ld B,$00
+	ld C,A
+	ADD A,A		; * 2
+	LD L,A
+	LD H,B		; 0
+	ADD HL,HL
+	ADD HL,HL	; * 8
+	ADD HL,BC	; * 9
 	ld bc,LAE02	; frames tiles base address
 	add hl,bc
-	; draw 8 lines vertically
+; first set the color
+  IF COLOR > 2
+	ld A,(HL)	; get color byte
+	ld (color_port),A
+  ENDIF
+	inc HL
+; draw 8 lines vertically
 	ld b,8
 .drawloop:
 	ld a,(hl)
@@ -2208,7 +2285,12 @@ PRSTRS:
 ; C  = Length
 ; HL = string address
 ; DE = screen address
-PRSTR:	LD A,(HL)	; get symbol byte
+PRSTR:
+  IF COLOR >= 4 && COLOR <= 8
+	xor A		; white on black
+	ld (color_port),A
+  ENDIF
+	LD A,(HL)	; get symbol byte
 	PUSH HL
 	PUSH DE
 	LD L,A
@@ -2264,8 +2346,10 @@ LAEE2:	inc e		; next screen line
 
 ; Tile buffer
 LB13E:	DEFS 8		; Pixel bytes
-;LB146:	DEFB $32	; Attribute byte
-;LB147:	DEFB $30	; Background attribute byte
+  IF COLOR > 2
+LB146:	DEFB $32	; Attribute byte
+LB147:	DEFB $30	; Background attribute byte
+  ENDIF
 
 ; Draw tile map on the screen
 DRALL:	;xor a
@@ -2309,9 +2393,12 @@ LB177:	ld de,TLSCR0-TLSCR1
 	ex DE,HL	; now DE = address in Tile screen 0
 	LD H,$00
 	LD L,A
+	ld B,H		; 0
+	ld C,L
 	ADD HL,HL
 	ADD HL,HL
-	ADD HL,HL	; * 8
+	ADD HL,HL
+	ADD HL,BC	; * 9
 	ld BC,LF700	; Background tiles start address
 	add HL,BC	; now HL = tile data address
 	LD BC,LB13E	; Tile buffer address
@@ -2323,10 +2410,14 @@ LB177:	ld de,TLSCR0-TLSCR1
     ENDR
 	LD A,(HL)	; get byte from tile data
 	LD (BC),A	; store the byte to tile buffer
-	;LD A,(HL)	; get byte from tile data
-	;LD (BC),A	; store the byte to tile buffer
-	;INC BC		; move to next byte in tile buffer
-	;LD (BC),A	; save attribute byte once more
+  IF COLOR > 2
+	inc HL
+	inc BC
+	LD A,(HL)	; get color byte from tile data
+	LD (BC),A	; store the byte to tile buffer
+	INC BC		; move to next byte in tile buffer
+	LD (BC),A	; save attribute byte once more
+  ENDIF
 ;
 ; Process Tile screen 2 tile - Ninja
 ; DE = address in Tile screen 0
@@ -2344,6 +2435,29 @@ LB1A3:	ld hl,TLSCR2-TLSCR0
 	CP $FF		; $FF - transparent?
 	JP Z,LB1F9	; $FF => skip Ninja tile drawing
 	LD L,A
+  IF COLOR > 2
+	CP $C8
+	JP C,LB1D5
+	CP $F4
+	JP NC,LB1D5
+	LD H,$02
+	CP $DA
+	JP NC,LB1CC
+	LD H,$05
+	CP $D8
+	JP NC,LB1CC
+	LD H,$07
+	LD A,(LB146)	; get attribute byte from the tile buffer
+	AND $38
+	CP $20
+	JP C,LB1CC
+	LD H,$01
+LB1CC:	LD A,(LB146)	; get attribute byte from the tile buffer
+	AND $F8
+	OR H
+	LD (LB146),A	; set attribute byte
+LB1D5:	
+  ENDIF
 	LD H,$00
 	ADD HL,HL
 	ADD HL,HL
@@ -2506,12 +2620,17 @@ LB263:	ld hl,TLSCR5	; !!MUT-ARG!! address in Tile Screen 5
 	JP Z,LB293	; $FF => skip front tile drawing
 	LD H,$00
 	LD L,A
-	;LD A,(LB147)	; get Background tile attribute
-	;LD (LB146),A	; set it as current tile attribute
+  IF COLOR > 2
+	LD A,(LB147)	; get Background tile attribute
+	LD (LB146),A	; set it as current tile attribute
+  ENDIF
+	ld D,H
+	ld E,L
 	ADD HL,HL
 	ADD HL,HL
 	ADD HL,HL
 	ADD HL,HL	; * 16
+	ADD HL,DE	; * 17
 	LD DE,LD600	; Front tiles base address
 	ADD HL,DE	; now HL = address of tile data
 	LD B,$08
@@ -2525,25 +2644,20 @@ LB284:	LD A,(DE)	; get byte from buffer
 	INC DE		; move to next buffer byte
 	dec b
 	jp nz,LB284	; loop for all 8 bytes
-	;LD A,(HL)	; get attribute byte from the tile data
-	;CP $FF		; $FF?
-	;JP Z,LB293	; $FF => skip
-	;LD (DE),A	; set as current attribute
-
+  IF COLOR > 2
+	LD A,(HL)	; get attribute byte from the tile data
+	CP $FF		; $FF?
+	JP Z,LB293	; $FF => skip
+	LD (DE),A	; set as current attribute
+  ENDIF
 ; Draw prepared tile on the screen
-LB293:	;ld a,(LB146)	; get attribute byte
-;	and $0E		; 0/2/4/6/8/10/12/14 = index in DRTILE_T
-;	ld l,a
-;	ld h,$00
-;	ld de,DRTILE_T	; Table of DRTILE strategies
-;	add hl,de	; now HL = address in the table
-;	LD A,(HL)	; get address low byte
-;	INC HL
-;	LD H,(HL)	; get address high byte
-;	LD L,A		; now HL = room token procedure address
+LB293:
+  IF COLOR > 2
+	ld a,(LB146)	; get attribute byte
+	ld (color_port),A
+  ENDIF
 	POP DE		; restore screen address
 	PUSH DE		; store screen address again
-;	JP (HL)
 	LD HL,LB13E	; Tile buffer address
   REPT 7
 	LD A,(hl)	; get byte from the buffer
@@ -2562,6 +2676,10 @@ LB2A6:	POP DE		; restore screen address
 
 ; Draw tile $FF
 DRTILE_FF:
+  IF COLOR > 2
+	ld A,color_backFF ; blue on black
+	ld (color_port),A
+  ENDIF
 	pop hl		; get screen address
 	push hl
 	ld de,$2000
@@ -5177,6 +5295,10 @@ LDFD4:	;XOR A
 
 ; Highlight Menu item
 LDFDB:	LD HL,$CD8E
+  IF COLOR > 2
+	ld A,color_menuline
+	ld (color_port),A
+  ENDIF
 	LD B,$0D
 LDFE0:	LD (HL),$55
 	inc h
@@ -5232,7 +5354,7 @@ LDF60:	;ei
 	LD HL,TITLE	; Menu messages address
 	CALL PRSTRS	; Print title string
 	DEFW SCRTOP+$0D10
-	DEFB 10
+	DEFB 13
 	LD HL,MENUTXT
 	call PRSTRB	; Print text block
 	;CALL LE04D	; Clear key buffer playing melody
@@ -5649,7 +5771,7 @@ L62DB:	INCBIN "sabot1mp.zx0"
 
 ; Front tiles, 124 tiles, 17 bytes each
 	INCLUDE "sabot1t1.asm"
-Sabot1Tiles1End:	; Gap of $07DD bytes starts here
+Sabot1Tiles1End:	; First gap starts here
 
 ; Game frame with indicators + tiles, ??? bytes
 	INCLUDE "sabot1in.asm"
@@ -5658,22 +5780,22 @@ Sabot1Tiles1End:	; Gap of $07DD bytes starts here
 ; Sprites
 	INCLUDE "sabot1sp2.asm"	; Sprites, 630 bytes
 
-	DEFS 51		; FILLER
+	DEFS 147		; FILLER
 Sabot1Tiles1B:
 Sabot1Tiles1Gap EQU Sabot1Tiles1B - Sabot1Tiles1End
-	DISPLAY "Sabot1Tiles1Gap: ",/A, Sabot1Tiles1Gap
-	ASSERT Sabot1Tiles1Gap == 1904 ; == $77*16  Make sure second part of tiles properly aligned
+	;DISPLAY "Sabot1Tiles1Gap: ",/A, Sabot1Tiles1Gap
+	ASSERT Sabot1Tiles1Gap == 2023 ; == $77*17  Make sure second part of tiles properly aligned
 	INCLUDE "sabot1t1b.asm"
 
 	INCLUDE "sabot1t2.asm"
-Sabot1Tiles2End:	; Gap of 360 bytes starts here
+Sabot1Tiles2End:	; Second gap starts here
 
 
-	DEFS 320	; FILLER
+	DEFS 360	; FILLER
 Sabot1Tiles2B:
 Sabot1Tiles2Gap EQU Sabot1Tiles2B - Sabot1Tiles2End
 	;DISPLAY "Sabot1Tiles2Gap: ",/A, Sabot1Tiles2Gap
-	ASSERT Sabot1Tiles2Gap == 320	; Make sure second part of tiles properly aligned
+	ASSERT Sabot1Tiles2Gap == 360 ; == 40*9 Make sure second part of tiles properly aligned
 	INCLUDE "sabot1t3.asm"
 
 Sabot1MainEnd:
