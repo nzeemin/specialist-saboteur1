@@ -283,18 +283,18 @@ LF700:	DEFB $01,$7D,$5D,$5D,$45,$7D,$01,$FF, color_yellow	; $00
 	DEFB $3F,$3F,$3F,$3F,$3F,$3F,$3F,$3F, color_blue	; $12 pier fence
 	DEFB $00,$7F,$7F,$FF,$08,$0F,$0F,$0F, color_blue	; $13
 	DEFB $00,$7F,$7F,$7F,$10,$F0,$F0,$F0, color_blue	; $14
-	DEFB $7C,$FE,$FE,$FE,$FE,$FE,$7C,$00, color_white	; $15
+	DEFB $7C,$FE,$FE,$FE,$FE,$FE,$7C,$00, color_cyan	; $15
 	DEFB $0F,$03,$01,$E0,$F8,$05,$03,$0F, color_white	; $16
-	DEFB $02,$7D,$7D,$7B,$0B,$F7,$F7,$F7, color_white	; $17
-	DEFB $2F,$6F,$6F,$6F,$5F,$DF,$DF,$DF, color_white	; $18
-	DEFB $BF,$BF,$BF,$BF,$7F,$7F,$7F,$7F, color_white	; $19
+	DEFB $02,$7D,$7D,$7B,$0B,$F7,$F7,$F7, color_blue	; $17 metro
+	DEFB $2F,$6F,$6F,$6F,$5F,$DF,$DF,$DF, color_blue	; $18 metro
+	DEFB $BF,$BF,$BF,$BF,$7F,$7F,$7F,$7F, color_blue	; $19 metro
 	DEFB $00,$00,$00,$FF,$FF,$FF,$FF,$FF, color_white	; $1A
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_green	; $1B
-	DEFB $40,$BF,$BF,$DF,$D0,$EF,$EF,$EF, color_white
-	DEFB $F4,$F7,$F7,$F7,$FA,$FB,$FB,$FB, color_white
-	DEFB $FD,$FD,$FD,$FD,$FE,$FE,$FE,$FE, color_white
-	DEFB $80,$80,$80,$C0,$C0,$E0,$F0,$FC, color_white	; $19
-	DEFB $01,$01,$01,$03,$03,$07,$0F,$3F, color_white	; $20
+	DEFB $40,$BF,$BF,$DF,$D0,$EF,$EF,$EF, color_blue	; $1C metro
+	DEFB $F4,$F7,$F7,$F7,$FA,$FB,$FB,$FB, color_blue	; $1D metro
+	DEFB $FD,$FD,$FD,$FD,$FE,$FE,$FE,$FE, color_blue	; $1E metro
+	DEFB $80,$80,$80,$C0,$C0,$E0,$F0,$FC, color_white	; $1F metro
+	DEFB $01,$01,$01,$03,$03,$07,$0F,$3F, color_white	; $20 metro
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_white	; $21
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_cyan	; $22
 	DEFB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF, color_green	; $23

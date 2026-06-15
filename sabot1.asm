@@ -3104,7 +3104,7 @@ LB5F5:	LD (HL),A
 	LD A,$FA
 	LD (LB2FD),A
 	LD A,$C8
-	LD A,$D2 ;DEBUG Granade
+	;LD A,$D2 ;DEBUG Granade
 	LD (LBD79+1),A
 	CALL L7472
 	;DI
@@ -5784,7 +5784,7 @@ Sabot1RoomsBegin:
 	INCLUDE "sabot1rb.asm"	; 833 bytes
 Sabot1RoomsEnd:
 Sabot1RoomsSize EQU Sabot1RoomsEnd - Sabot1RoomsBegin
-	;DISPLAY "Rooms size: ", /A, Sabot1RoomsSize
+	DISPLAY "Rooms size: ", /A, Sabot1RoomsSize
 
 ; Font, 413 bytes
 	INCLUDE "sabot1ft.asm"

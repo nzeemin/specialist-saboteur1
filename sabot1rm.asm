@@ -97,7 +97,7 @@ L791E:	DEFW	LB446	; Room procedure
 	DEFRTVT 8, $0C, TLSCR0+249	; Fill vert 8 tiles with $0C at 6689
 	DEFRTVT 8, $0C, TLSCR0+254	; Fill vert 8 tiles with $0C at 668E
 	DEFRTVT 8, $0C, TLSCR0+259	; Fill vert 8 tiles with $0C at 6693
-	DEFRTVT 12, $F2, TLSCR0+91	; Fill vert 12 tiles with $F2 at 65EB
+	DEFRTVT 12, $F2, TLSCR0+91	; Fill vert 12 tiles with $F2 at 65EB - wall
 	DEFRTBK	13, TLSCR0+129		; Block 4x3 tiles from 7194 to 6611
 	DEFRTBK	13, TLSCR0+133		; Block 4x3 tiles from 7194 to 6615
 	DEFRTBK	13, TLSCR0+137		; Block 4x3 tiles from 7194 to 6619
@@ -1698,6 +1698,7 @@ L92A7:	DEFW	LB483	; Room procedure
 	DEFRTBK	2, TLSCR5+338		; Block 2x4 tiles from 71BB to 70D8
 	DEFRTBK	2, TLSCR5+341		; Block 2x4 tiles from 71BB to 70DB
 	DEFRTBK	2, TLSCR5+344		; Block 2x4 tiles from 71BB to 70DE
+	DEFRTVT 4, $F2, TLSCR0+11*30+1	; Fill vert 4 tiles with $F2 - patch to show the computer
 	DEFB	$00	; End of sequence
 
 ; Room 92EF
@@ -1726,6 +1727,7 @@ L92EF:	DEFW	L7918	; Room procedure
 	DEFRTBK	2, TLSCR5+102		; Block 2x4 tiles from 71BB to 6FEC
 	DEFRTBK	2, TLSCR5+105		; Block 2x4 tiles from 71BB to 6FEF
 	DEFRTBK	2, TLSCR5+108		; Block 2x4 tiles from 71BB to 6FF2
+	DEFRT03 $F2, 3,4, TLSCR0+3*30+1	; Rectangle 3x4 tiles with $F2 - patch to show the computer
 	DEFB	$00	; End of sequence
 
 ; Room 9376
@@ -2488,7 +2490,7 @@ LA022:	DEFW	LB41F	; Room procedure
 	DEFRT04 22, $0D, TLSCR0+60	; Fill horz 22 tiles with $0D at 65CC
 	DEFRTBL	47, 4,2, TLSCR0+4	; Block 4x2 tiles from A0AD to 6594
 	DEFRT03 $0D, 4,2, TLSCR0+0	; Rectangle 4x2 tiles with $0D at 6590
-	DEFRTVT 8, $FF, TLSCR0+235	; Fill vert 8 tiles with $FF at 667B
+	DEFRTVT 8, $F2, TLSCR0+235	; Fill vert 8 tiles with $F2 at 667B - wall
 	DEFRTBL	46, 1,2, TLSCR0+477	; Block 1x2 tiles from A0AB to 676D
 	DEFB	$00	; End of sequence
 
