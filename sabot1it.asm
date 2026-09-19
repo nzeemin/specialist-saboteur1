@@ -71,7 +71,7 @@ LA9C9:	DEFB color_white,	$00,$00,$00,$00,$7F,$60,$71,$7F	; Pipe
 	DEFB color_yellow,	$00,$3E,$08,$08,$08,$08,$3E,$00
 	DEFB color_yellow,	$00,$7C,$44,$44,$7C,$40,$40,$00
 	DEFB color_yellow,	$00,$FC,$80,$FC,$80,$80,$FC,$00
-LAA35:	DEFB color_green,	$00,$00,$00,$00,$00,$00,$00,$00	; Granade
+LAA35:	DEFB color_green,	$00,$00,$00,$00,$00,$00,$00,$00	; Grenade
 	DEFB color_green,	$00,$00,$00,$00,$00,$0F,$7E,$CF
 	DEFB color_green,	$00,$00,$00,$39,$0D,$F6,$7B,$9D
 	DEFB color_green,	$00,$00,$E0,$B0,$18,$18,$70,$A0

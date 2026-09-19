@@ -102,12 +102,12 @@ LFA7B:	DEFB $00,$9F,$FB,$00,$00,$EF,$79,$00, color_cyan	; $63
 	DEFB $FC,$FC,$FC,$F8,$F8,$F8,$F1,$F1, color_white
 	DEFB $8F,$8F,$1F,$1F,$1F,$3F,$3F,$3F, color_white
 	DEFB $FF,$FF,$FF,$FF,$FF,$FE,$FE,$FE, color_white
-	DEFB $F1,$E3,$E3,$E3,$C7,$C7,$C7,$8F, color_white
+	DEFB $F1,$E3,$E3,$E3,$C7,$C7,$C7,$8F, color_white	; $CA
 	DEFB $00,$00,$00,$00,$F8,$F8,$F1,$F1, color_white
-	DEFB $80,$BE,$AA,$BE,$AA,$BE,$80,$7F, color_white
-	DEFB $49,$82,$FF,$FF,$FF,$FF,$FF,$FF, color_white
-	DEFB $27,$41,$B9,$24,$5C,$49,$32,$85, color_white
-	DEFB $FC,$FE,$FD,$FC,$FE,$FD,$FE,$FD, color_white
+	DEFB $80,$BE,$AA,$BE,$AA,$BE,$80,$7F, color_cyan	; $CC elevator
+	DEFB $B6,$7D,$00,$00,$00,$00,$00,$00, color_yellow	; $CD elevator
+	DEFB $D8,$BE,$46,$DB,$A3,$B6,$CD,$7A, color_yellow	; $CE elevator
+	DEFB $03,$01,$02,$03,$01,$02,$01,$02, color_yellow	; $CF elevator
 	DEFB $3C,$C2,$99,$B1,$A1,$A1,$C3,$3C, color_cyan	; $D0
 	DEFB $00,$8C,$FF,$73,$00,$00,$FF,$00, color_cyan	; $D1
 	DEFB $C3,$81,$42,$42,$42,$5A,$81,$3C, color_green	; $D2

@@ -204,7 +204,7 @@ LB5B0:	DEFW LA7AD	; #0 Nothing
 	DEFW LA8F1	; #3 ??
 	DEFW LA95D	; #4 Brick
 	DEFW LA9C9	; #5 Pipe
-	DEFW LAA35	; #6 Granade
+	DEFW LAA35	; #6 Grenade
 	DEFW LAAA1	; #7 Disk
 	DEFW LAB0D	; #8 Bomb
 	DEFW LAB79	; #9 Console
@@ -389,13 +389,13 @@ LD287:	DEFW TLSCR0+217	; Object ?? 07 Diskette
 	DEFW TLSCR0+212	; Object ?? 22
 	DEFB $6F,$02,$CA
 	DEFW 0
-LD2F7:	DEFW TLSCR0+212	; Object 23: Granade
+LD2F7:	DEFW TLSCR0+212	; Object 23: Grenade
 	DEFB $70,$06,$D2
 	DEFW 0
 	DEFW TLSCR0+212	; Object 24: Knife
 	DEFB $71,$02,$CA
 	DEFW 0
-	DEFW TLSCR0+212	; Object 25: Granade
+	DEFW TLSCR0+212	; Object 25: Grenade
 	DEFB $72,$06,$D2
 	DEFW 0
 	DEFW TLSCR0+212	; Object 26: Knife
@@ -601,7 +601,7 @@ LE3C8	DEFB $0E,$0A,$23
 ; Level 5 "MODERATE"
 LE3DC	DEFB $0C,$09,$1E
 	DEFM "9070"
-	DEFB $FF,$0E,$0E,$26,$0E
+	DEFB $FF,$0E,$0E,$27,$0E
 	DEFM " 70"
 	DEFB $46
 	DEFW L8689
@@ -609,7 +609,7 @@ LE3DC	DEFB $0C,$09,$1E
 ; Level 6 "SLIGHTLY HARD"
 LE3F0	DEFB $0A,$07,$19
 	DEFM "8560"
-	DEFB $FF,$26,$0E,$26,$0E
+	DEFB $FF,$26,$0E,$27,$0E
 	DEFM "100"
 	DEFB $64
 	DEFW L8BAB
@@ -617,7 +617,7 @@ LE3F0	DEFB $0A,$07,$19
 ; Level 7 "HARD"
 LE404	DEFB $08,$06,$14
 	DEFM "8550"
-	DEFB $FF,$26,$27,$26,$0E
+	DEFB $FF,$26,$27,$27,$0E
 	DEFM "130"
 	DEFB $82
 	DEFW L8D5C
@@ -625,7 +625,7 @@ LE404	DEFB $08,$06,$14
 ; Level 8 "VERY HARD"
 LE418	DEFB $05,$05,$0F
 	DEFM "8050"
-	DEFB $FF,$26,$27,$26,$28
+	DEFB $FF,$26,$27,$27,$28
 	DEFM "170"
 	DEFB $AA
 	DEFW L8279
@@ -633,7 +633,7 @@ LE418	DEFB $05,$05,$0F
 ; Level 9 "EXTREMELY HARD"
 LE42C:	DEFB $02,$03,$0A
 	DEFM "7040"
-	DEFB $FF,$26,$27,$26,$28
+	DEFB $FF,$26,$27,$27,$28
 	DEFM "250"
 	DEFB $FA
 	DEFW L8608
@@ -765,17 +765,17 @@ LDIR_B:
 	dec b
 	jp nz,.loop
 	ret
- 
+
 ;----------------------------------------------------------------------------
 
 ; Show title picture (two ninjas)
-L6289: 	
+L6289:
 ; Decompress the picture to TLSCR0 (used as buffer)
 	ld DE,L62DB	; source addr
 	ld BC,TLSCR0	; destination addr
 	call dzx0
 ; Buffer is ready, copy to screen
-L62A9: 	
+L62A9:
   IF COLOR > 2
 	ld A,color_menupict
 	ld (color_port),A
@@ -1764,7 +1764,7 @@ LA440:	LD HL,GARDCN	; Guard counter address
 	LD (LA4D0),A	; set the instruction
 	LD A,$13	; "INC DE" instruction
 	LD (LA4D1),A	; set the instruction
-LA4A2:	
+LA4A2:
   IF COLOR > 2 && COLOR <= 8
 	ld a,color_red
 	ld (color_port),A
@@ -2472,7 +2472,7 @@ LB1CC:	LD A,(LB146)	; get attribute byte from the tile buffer
 	AND $F8
 	OR H
 	LD (LB146),A	; set attribute byte
-LB1D5:	
+LB1D5:
   ENDIF
 	LD H,$00
 	ADD HL,HL
@@ -2728,7 +2728,7 @@ LB32A:	ld HL,L97CF+1
 	jp LB34B	; XOR and => Change Console color in NEAR
 ; Object procedure: flip trigger "C": set/remove wall in room 8D5C
 LB334:	ld HL,L8DBB
-	ld B,$28	; value for XOR, to switch token $0E/$26
+	ld B,$29	; value for XOR, to switch token $0E/$27
 	jp LB34B	; XOR and => Change Console color in NEAR
 ; Object procedure: flip trigger "B": set/remove wall in room 8F20
 LB33E:	ld HL,L8F31
@@ -3104,7 +3104,7 @@ LB5F5:	LD (HL),A
 	LD A,$FA
 	LD (LB2FD),A
 	LD A,$C8
-	;LD A,$D2 ;DEBUG Granade
+	;LD A,$D2 ;DEBUG Grenade
 	LD (LBD79+1),A
 	CALL L7472
 	;DI
@@ -3824,7 +3824,7 @@ LBA0C:	push HL
 	pop HL
 	;JP LBAD5	; => delete the object
 ;
-; This object should be deleted, Granade explode
+; This object should be deleted, Grenade explode
 ; HL = object address in LA39F table
 LBAD5:	CALL LFA28	; Sound
 LBAD8:	ld hl,LA39F	; !!MUT-ARG!! restore object address
@@ -3838,9 +3838,9 @@ LBAD8:	ld hl,LA39F	; !!MUT-ARG!! restore object address
 ;
 LBAE4:	ld a,(hl)	; get object tile
 	and $FE
-	CP $D2		; $D2/$D3 ? Granade
+	CP $D2		; $D2/$D3 ? Grenade
 	JP NZ,LBBA7	; no => delete the object
-; Granade; HL = object address = LA39F
+; Grenade; HL = object address = LA39F
 LBAF0:	LD HL,LBAB2	; Explosion counter address
 	XOR A
 	CP (HL)		; have Explosion already?
@@ -3860,6 +3860,7 @@ LBAF0:	LD HL,LBAB2	; Explosion counter address
 	ld l,a		; now HL = screen address of the row beginning
 	ld a,(LA39F+6)	; get object X
 	add a,h
+	dec a		; shift one column left, so block starts at X-1
 	ld h,a		; now HL = screen address
 	LD (LBA57+1),HL	; set screen address
 	LD B,3		; height, rows, initial
@@ -3867,7 +3868,7 @@ LBAF0:	LD HL,LBAB2	; Explosion counter address
 	ld hl,LABE5	; Explosion image address
 	ld (LBA5A+1),hl	; set Explosion image address
 	LD HL,(LBA2A+1)
-	LD DE,$0000	; offset for screen address
+	LD DE,$FFF8	; offset for screen address = one row up, so block starts at Y-1
 	LD A,(LA39F+5)	; get object Y
 	CP $10		; bottom row?
 	JP NZ,LBB59
@@ -3929,7 +3930,7 @@ LBA63:	PUSH HL
 LBA67:	LD A,(DE)	; get pixels
 	LD (HL),A	; put to screen
 	INC DE
-	dec l 		; line down
+	inc l 		; line down
 	dec b
 	jp nz,LBA67
 	POP BC
@@ -3943,7 +3944,7 @@ LBA67:	LD A,(DE)	; get pixels
 	EX DE,HL
 	POP HL		; restore screen address
 	ld a,l
-	sub 8		; 8 lines down
+	add a,8		; 8 lines down
 	ld l,a
 	dec b
 	jp nz,LBA5F
@@ -4068,7 +4069,7 @@ LBC98:	LD A,$D2
 	JP Z,LBC7E
 
 ; Check for suicide key combination
-LBC9D:	
+LBC9D:
 	; ld a,(KeyLineEx)
 	; and $60		; bits for US + SS
 	; jp nz,LBCB6	; not pressed => skip suicide
@@ -5526,16 +5527,16 @@ LE343:	ex de,hl
 	LD (L97CF+1),A	; set flag for wall in room 97A6
 	INC HL
 	LD A,(HL)
-	LD (L9755+1),A	; set count for wall in room 9739
+	LD (L9755),A	; set token for wall in room 9739
 	INC HL
 	LD A,(HL)
-	LD (L7F7A+1),A	; set count for wall in room 7F48
+	LD (L7F7A),A	; set token for wall in room 7F48
 	INC HL
 	LD A,(HL)
-	LD (L8DBB+1),A	; set count for wall in room 8D5C
+	LD (L8DBB),A	; set token for wall in room 8D5C
 	INC HL
 	LD A,(HL)
-	LD (L8F31+1),A	; set count for wall in room 8F20
+	LD (L8F31),A	; set token for wall in room 8F20
 	INC HL
 	ld b,$04
 	LD DE,LE388
